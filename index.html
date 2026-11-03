@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>la maison du charlo — Dossier d'inscription</title>
+  <style>
+    /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+    :root {
+      --color-bg: oklch(0.985 0 0);
+      --color-surface: oklch(1 0 0);
+      --color-surface-hover: oklch(0.96 0 0);
+      --color-surface-active: oklch(0.92 0 0);
+      --color-border: oklch(0.88 0 0);
+      --color-border-strong: oklch(0.2 0 0);
+      --color-text-main: oklch(0.12 0 0);
+      --color-text-muted: oklch(0.45 0 0);
+      --color-accent: oklch(0.12 0 0);
+      --color-accent-hover: oklch(0.25 0 0);
+      --color-accent-subtle: oklch(0.95 0 0);
+      --font-brand: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 24px 16px 80px 16px;
+    }
+
+    /* En-tête avec logo dans le coin */
+    .header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 28px;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .brand-group {
+      min-width: 0;
+    }
+
+    h1.brand-title {
+      font-family: var(--font-brand);
+      font-weight: bold;
+      font-size: clamp(1.4rem, 5vw, 2.5rem);
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+      text-transform: lowercase;
+      margin-bottom: 4px;
+      line-height: 1.15;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .brand-sub {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .logo-corner {
+      flex: 0 0 auto;
+    }
+
+    .logo-corner img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: 2px;
+      box-shadow: var(--shadow-soft);
+      display: block;
+    }
+
+    @media (min-width: 641px) {
+      .logo-corner img {
+        width: 68px;
+        height: 68px;
+      }
+    }
+
+    /* Bouton d'action principal */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #ffffff;
+      font-family: var(--font-brand);
+      font-weight: bold;
+      font-size: 0.95rem;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .doc-count-badge {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Grille des documents */
+    .section-title {
+      font-family: var(--font-brand);
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .doc-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .doc-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .doc-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin-bottom: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    .doc-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 2px;
+      text-decoration: none;
+      display: block;
+      overflow-wrap: anywhere;
+    }
+
+    .doc-name:hover {
+      color: var(--color-text-main);
+      text-decoration: underline;
+    }
+
+    .doc-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .doc-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-text-main);
+      color: var(--color-surface);
+      border: 1px solid var(--color-text-main);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease, opacity 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-pdf:hover {
+      background: var(--color-accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-preview {
+      display: inline-flex;
+      align-items: center;
+      background: var(--color-surface);
+      color: var(--color-text-main);
+      border: 1px solid var(--color-border);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-preview:hover {
+      background: var(--color-surface-hover);
+      border-color: var(--color-text-main);
+    }
+
+    .btn-docx {
+      color: var(--color-text-muted);
+      border: 1px solid transparent;
+      padding: 8px 8px;
+      font-size: 0.82rem;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .btn-docx:hover {
+      color: var(--color-text-main);
+      text-decoration: underline;
+    }
+
+    /* Visionneuse PDF intégrée */
+    .viewer-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      margin-top: 32px;
+      display: none;
+    }
+
+    .viewer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .viewer-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .viewer-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .viewer-frame {
+      width: 100%;
+      height: 700px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: #525659;
+    }
+
+    /* Footer discret */
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .logo-corner img {
+        width: 48px;
+        height: 48px;
+      }
+      .doc-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .doc-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .viewer-frame {
+        height: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- En-tête avec titre Arial Bold et logo USL dans le coin -->
+    <header class="header">
+      <div class="brand-group">
+        <h1 class="brand-title">la maison du charlo</h1>
+        <p class="brand-sub">Maison des Lycéens (MDL) · Dossier officiel d'inscription</p>
+      </div>
+      <div class="logo-corner" title="Logo USL">
+        <img src="usl.jpg" alt="Logo USL">
+      </div>
+    </header>
+
+    <!-- Actions principales -->
+    <div class="hero-actions">
+      <a href="Statuts_La_Maison_du_Charlo.pdf" target="_blank" class="btn-primary" id="btn-main-pdf">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        Consulter les statuts en PDF
+      </a>
+      <span class="doc-count-badge">6 documents disponibles en PDF</span>
+    </div>
+
+    <!-- Liste des documents -->
+    <h2 class="section-title">Documents du dossier d'inscription</h2>
+    <div class="doc-list">
+
+      <!-- Document 1 : Statuts -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Statuts officiels</div>
+          <a href="Statuts_La_Maison_du_Charlo.pdf" target="_blank" class="doc-name">Statuts de l'association « La Maison du Charlo »</a>
+          <div class="doc-desc">MDL du Lycée Charlemagne — Textes fondateurs et organisation légale</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('Statuts_La_Maison_du_Charlo.pdf', 'Statuts de l\'association')">Aperçu</button>
+          <a href="Statuts_La_Maison_du_Charlo.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="Statuts_La_Maison_du_Charlo.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+      <!-- Document 2 : Procès-Verbal AG -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Pièce 1</div>
+          <a href="1_PV_AG_Constitutive.pdf" target="_blank" class="doc-name">1. Procès-Verbal de l'AG Constitutive</a>
+          <div class="doc-desc">Adoption des statuts et élection du premier bureau</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('1_PV_AG_Constitutive.pdf', 'Procès-Verbal de l\'AG Constitutive')">Aperçu</button>
+          <a href="1_PV_AG_Constitutive.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="1_PV_AG_Constitutive.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+      <!-- Document 3 : Liste des dirigeants -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Pièce 2</div>
+          <a href="2_Liste_des_dirigeants.pdf" target="_blank" class="doc-name">2. Liste des dirigeants</a>
+          <div class="doc-desc">Déclaration des membres du bureau pour le Tribunal de Thionville</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('2_Liste_des_dirigeants.pdf', 'Liste des dirigeants')">Aperçu</button>
+          <a href="2_Liste_des_dirigeants.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="2_Liste_des_dirigeants.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+      <!-- Document 4 : Autorisation parentale -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Pièce 3</div>
+          <a href="3_Autorisation_Parentale_Mineur.pdf" target="_blank" class="doc-name">3. Autorisation parentale pour mineur</a>
+          <div class="doc-desc">Pour l'administration de l'association par les lycéens mineurs</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('3_Autorisation_Parentale_Mineur.pdf', 'Autorisation parentale pour mineur')">Aperçu</button>
+          <a href="3_Autorisation_Parentale_Mineur.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="3_Autorisation_Parentale_Mineur.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+      <!-- Document 5 : Attestation de domiciliation -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Pièce 4</div>
+          <a href="4_Attestation_Domiciliation_Lycee.pdf" target="_blank" class="doc-name">4. Attestation de domiciliation lycée</a>
+          <div class="doc-desc">Siège social au Lycée Charlemagne, 17 Av. Clemenceau Thionville</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('4_Attestation_Domiciliation_Lycee.pdf', 'Attestation de domiciliation lycée')">Aperçu</button>
+          <a href="4_Attestation_Domiciliation_Lycee.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="4_Attestation_Domiciliation_Lycee.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+      <!-- Document 6 : Requête tribunal -->
+      <div class="doc-card">
+        <div class="doc-info">
+          <div class="doc-meta">Pièce 5</div>
+          <a href="5_Requete_Inscription_Tribunal.pdf" target="_blank" class="doc-name">5. Requête d'inscription au tribunal</a>
+          <div class="doc-desc">Demande officielle au greffe du Registre des Associations</div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-preview" onclick="loadPreview('5_Requete_Inscription_Tribunal.pdf', 'Requête d\'inscription au tribunal')">Aperçu</button>
+          <a href="5_Requete_Inscription_Tribunal.pdf" target="_blank" class="btn-pdf">Ouvrir PDF</a>
+          <a href="5_Requete_Inscription_Tribunal.docx" download class="btn-docx">.docx</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Visionneuse PDF intégrée -->
+    <section id="viewer-container" class="viewer-section">
+      <div class="viewer-header">
+        <span id="viewer-doc-title" class="viewer-title">Aperçu du document</span>
+        <div class="viewer-links">
+          <a id="viewer-full-link" href="#" target="_blank" class="btn-pdf">Ouvrir plein écran ↗</a>
+          <button class="btn-preview" onclick="closeViewer()">Fermer</button>
+        </div>
+      </div>
+      <iframe id="pdf-frame" class="viewer-frame" src="" title="Visionneuse PDF"></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>Tribunal Judiciaire de Thionville · Registre des Associations (Alsace-Moselle)</div>
+      <div>Lycée Charlemagne · Thionville</div>
+    </footer>
+  </div>
+
+  <script>
+    function loadPreview(pdfPath, title) {
+      var container = document.getElementById('viewer-container');
+      var frame = document.getElementById('pdf-frame');
+      var titleElem = document.getElementById('viewer-doc-title');
+      var fullLink = document.getElementById('viewer-full-link');
+
+      frame.src = pdfPath;
+      titleElem.textContent = title;
+      fullLink.href = pdfPath;
+      container.style.display = 'block';
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeViewer() {
+      var container = document.getElementById('viewer-container');
+      var frame = document.getElementById('pdf-frame');
+      frame.src = '';
+      container.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
